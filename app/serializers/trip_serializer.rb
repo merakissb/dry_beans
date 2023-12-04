@@ -1,4 +1,3 @@
 class TripSerializer < ActiveModel::Serializer
-  attributes :id, :name, :date
-  has_many :deliveries
+  attributes :id, :name, :date, :deliveries
 end

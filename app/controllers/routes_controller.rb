@@ -6,7 +6,7 @@ class RoutesController < ApplicationController
 
   # GET /routes/:id
   def show
-    render json: @route, status: :ok
+    render json: @route, status: :ok, serializer: RouteSerializer
   end
 
   private
