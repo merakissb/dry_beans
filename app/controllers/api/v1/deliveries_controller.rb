@@ -33,7 +33,7 @@ module Api
       def validate_trip
         return if @trip.present?
 
-        render json: { errors: t('errors.trip.not_found') }, status: :not_found
+        render json: { errors: I18n.t('errors.trip_not_found') }, status: :not_found
       end
 
       def delivery_params

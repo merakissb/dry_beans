@@ -32,5 +32,5 @@
 en:
   hello: "Hello world"
   errors:
-    trip:
-      not_found: "trip not found"
+    trip_not_found: "Trip not found"
+    route_not_found: "Route not found"

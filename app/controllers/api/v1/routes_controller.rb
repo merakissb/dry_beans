@@ -23,7 +23,7 @@ module Api
       def validate_route
         return if @route.present?
 
-        render json: { errors: 'Route not found' }, status: :not_found
+        render json: { errors: I18n.t('errors.route_not_found') }, status: :not_found
       end
     end
   end
