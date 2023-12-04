@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe RoutesController, type: :controller do
+RSpec.describe Api::V1::RoutesController, type: :controller do
   let(:formatted_date) { Time.zone.now.strftime('%Y-%m-%d') }
 
   let!(:route) do
