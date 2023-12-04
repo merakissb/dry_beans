@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe RoutesController, type: :controller do
   let(:formatted_date) { Time.zone.now.strftime('%Y-%m-%d') }
 
-  let(:route) do
+  let!(:route) do
     Route.create(
       id: 1,
       name: 'Sample Route',
@@ -13,7 +13,7 @@ RSpec.describe RoutesController, type: :controller do
     )
   end
 
-  let(:trip) do
+  let!(:trip) do
     Trip.create(
       id: 1,
       route_id: route.id,
@@ -22,7 +22,7 @@ RSpec.describe RoutesController, type: :controller do
     )
   end
 
-  let(:delivery) do
+  let!(:delivery) do
     Delivery.create(
       id: 1,
       trip_id: trip.id,
@@ -44,10 +44,10 @@ RSpec.describe RoutesController, type: :controller do
         expect(json_date).to eq(formatted_date)
 
         # Check trips
-        puts json_response
         expect(json_response['trips'].size).to eq(1)
 
         # Check deliveries
+        expect(json_response['trips'][0]['deliveries'].size).to eq(1)
       end
     end
 
