@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    trip:
+      not_found: "trip not found"
