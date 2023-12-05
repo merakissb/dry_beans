@@ -3,19 +3,30 @@
 module Api
   module V1
     class DeliveriesController < ApplicationController
-      before_action :set_trip, only: %i[create]
-      before_action :validate_trip, only: %i[create]
+      before_action :set_delivery, only: %i[show]
 
-      # POST api/v1/routes/:route_id/trips/:trip_id/deliveries
-      #
-      # body
+      # GET api/v1/deliveries
+      def index
+        _, deliveries = pagy(Delivery.all, page: params[:page], items: params[:items] || 1)
+        render json: deliveries, status: :ok
+      end
+
+      # GET api/v1/deliveries/:id
+      def show
+        render json: @delivery, status: :ok
+      end
+
+      # POST api/v1/deliveries/
+      # body example
       # {
-      #   "delivery_type": "pickup",
-      #   "status": "pending"
+      #   "delivery": {
+      #     "delivery_type": "pickup",
+      #     "date": "2023-12-05",
+      #     "trip_id": "1"
+      #   }
       # }
-      #
       def create
-        delivery = @trip.deliveries.new(delivery_params)
+        delivery = Delivery.new(delivery_params)
 
         if delivery.save
           render json: delivery, status: :created
@@ -26,18 +37,14 @@ module Api
 
       private
 
-      def set_trip
-        @trip = Trip.find_by(id: params[:trip_id])
-      end
+      def set_delivery
+        @delivery = Delivery.find_by(id: params[:id])
 
-      def validate_trip
-        return if @trip.present?
-
-        render json: { errors: I18n.t('errors.trip_not_found') }, status: :not_found
+        render json: { errors: I18n.t('errors.delivery_not_found') }, status: :not_found unless @delivery.present?
       end
 
       def delivery_params
-        params.permit(:delivery_type, :status)
+        params.require(:delivery).permit(:delivery_type, :status, :date, :trip_id)
       end
     end
   end

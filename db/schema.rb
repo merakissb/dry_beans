@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_161841) do
   create_table "deliveries", force: :cascade do |t|
     t.bigint "trip_id", null: false
     t.integer "delivery_type", null: false
+    t.datetime "date", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

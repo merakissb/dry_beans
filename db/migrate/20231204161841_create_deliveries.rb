@@ -4,6 +4,7 @@ class CreateDeliveries < ActiveRecord::Migration[7.0]
       t.references :trip, null: false, foreign_key: true
 
       t.integer :delivery_type, null: false
+      t.datetime :date, null: false
       t.integer :status, null: false, default: 0
 
       t.timestamps
