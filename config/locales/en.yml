@@ -32,9 +32,11 @@
 en:
   hello: "Hello world"
   errors:
+    not_found: "resource not found"
     trip_not_found: "Trip not found"
     route_not_found: "Route not found"
     trip_params_not_found: "Trip params not found"
     route_params_not_found: "Route params not found"
     delivery_not_found: "Delivery not found"
     page_not_found: "Page not found"
+    invalid_params: "Invalid params"

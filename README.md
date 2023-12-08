@@ -23,34 +23,44 @@ To test, use postman or similar (create the resources and then query the route)
 ```bash
   POST api/v1/routes/
   {
-    "name": "Ruta 1",
-    "date": "2023-12-04"
-  }
-
-  POST api/v1/trips
-  {
-    "trip": {
-      "name": "Trip 1 Route 1",
-      "date": "2023-12-04",
-      "route_id": "1"
-    }
-  }
-
-  POST api/v1/deliveries/
-  {
-    "delivery": {
-      "delivery_type": "pickup",
-      "date": "2023-12-05",
-      "trip_id": "1"
+    "route": {
+      "name": "Route Name",
+      "date": "2023-12-07",
+      "trips_attributes": [
+        {
+          "name": "Trip Name",
+          "date": "2023-12-07",
+          "deliveries_attributes": [
+            {
+              "delivery_type": "delivery",
+              "date": "2023-12-07"
+            },
+            {
+              "delivery_type": "pickup",
+              "date": "2023-12-07"
+            },
+            {
+              "delivery_type": "delivery",
+              "date": "2023-12-07"
+            }
+          ]
+        }
+      ]
     }
   }
 
   GET api/v1/routes/:id
-  {
-  "route":
-	  "trips": [
-      "deliveries": [
+  [
+    {
+      "route":
+ 	    "trips": [
+        {
+          "deliveries": [
+            {
+            }
+          ]
+        }
       ]
-	  ]
-  }
+    }
+  ]
 ```
