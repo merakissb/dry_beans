@@ -80,7 +80,7 @@ RSpec.describe Api::V1::RoutesController, type: :controller do
         expect(response).to have_http_status(:not_found)
 
         json_response = JSON.parse(response.body)
-        expect(json_response['errors']).to eq('Route not found')
+        expect(json_response['resource_not_found']) == 'true'
       end
     end
   end
